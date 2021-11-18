@@ -37,7 +37,7 @@ const votersTypes = gql`
         name:String
         country:String
         type:String
-        file:Upload
+        file:Upload!
         category:String
     }
 

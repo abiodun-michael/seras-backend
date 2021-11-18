@@ -6,6 +6,7 @@ const cors = require('cors')
 const {typeDefs, resolvers} = require('./graphql/index')
 const {checkAuth} = require('./util')
 const jwt = require('jsonwebtoken')
+const { graphqlUploadExpress } = require('graphql-upload');
 
 
 
@@ -23,6 +24,7 @@ const startApolloServer = async()=>{
     const app = express();
     app.use(express.json({limit:'10MB'}))
     app.use(cookieParser())
+    app.use(graphqlUploadExpress())
     app.use(cors({origin:(origin, callback)=>{
       
       if(!origin) return callback(null, true)
