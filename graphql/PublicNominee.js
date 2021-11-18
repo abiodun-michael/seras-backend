@@ -70,9 +70,8 @@ const nomineeResolvers = {
             const {createReadStream, filename, mimetype, encoding} = await input.file
 
             const stream = createReadStream()
-            await uploadImage(stream,"nominee").then((res)=>{
-                console.log(res)
-            })
+            const f = await uploadImage(stream,"nominee")
+            console.log(f)
             
 
             const [category, created] = await PublicNominee.findOrCreate({where:{name:input.name}, defaults:input})
