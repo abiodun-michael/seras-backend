@@ -9,10 +9,10 @@ cloudinary.config({
   });
 
 
-  const uploadImage = async(stream,filename)=>{
+  const uploadImage =(stream,folder)=>{
       
     return new Promise((resolve, reject)=>{
-        const cloudinaryStream = cloudinary.uploader.upload_stream({ resource_type: "image" }, (error,result)=>{
+        let cloudinaryStream = cloudinary.uploader.upload_stream({folder, resource_type: "image" }, (error,result)=>{
             if(result){
                 resolve(resolve)
             }
@@ -20,7 +20,7 @@ cloudinary.config({
             if(error){
                 reject(error)
             }
-        })
+        }) 
 
         stream.pipe(cloudinaryStream)
     })

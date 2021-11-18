@@ -71,7 +71,7 @@ const nomineeResolvers = {
             const {createReadStream, filename, mimetype, encoding} = await input.file
 
             const stream = createReadStream()
-            const file = await uploadImage(stream,filename)
+            const file = await uploadImage(stream,"nominee")
             console.log(file)
 
             if(created){
