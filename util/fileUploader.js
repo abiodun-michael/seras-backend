@@ -15,6 +15,7 @@ cloudinary.config({
         let cloudinaryStream = cloudinary.uploader.upload_stream({folder, resource_type: "image" }, (error,result)=>{
             if(result){
                 resolve(resolve)
+                return
             }
 
             if(error){
