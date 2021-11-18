@@ -26,12 +26,12 @@ const categoryTypes = gql`
         desc:String!
     }
 
-    extend type Query{
+    type Query{
         getAllCategory:[Category]
         getCategoryById(id:Int!):Category
     }
 
-    extend type Mutation{
+    type Mutation{
         createCategory(input:CreateCategoryInput):CategoryMutationResponse
         updateCategory(input:UpdateCategoryInput):CategoryMutationResponse
     }
