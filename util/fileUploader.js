@@ -10,10 +10,13 @@ cloudinary.config({
 
 
   const uploadImage = async(stream,filename)=>{
-      let file = null
+      let file = {
+        secure_url:'',
+        public_id:''
+      }
    const cloudinaryStream = cloudinary.uploader.upload_stream({ resource_type: "image" }, (error,result)=>{
         if(result){
-            file = {secure_url:result?.secure_url,public_id:result?.public_id}
+            file.secure_url = result?.secure_url
         }
     })
 
