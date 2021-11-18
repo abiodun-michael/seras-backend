@@ -3,6 +3,9 @@ const {PublicNominee} = require('../database')
 
 
 const votersTypes = gql`
+
+    scalar Upload
+
     type PublicNomineeMutationResponse{
         status:Boolean
         message:String
@@ -57,12 +60,13 @@ const votersResolvers = {
             return await PublicNominee.findOne({where:{id}})
         },
     },
-
+    Upload: GraphQLUpload,
     Mutation:{
         createPublicNominee:async(_,{input})=>{
             const [category, created] = await PublicNominee.findOrCreate({where:{name:input.name}, defaults:input})
-            const {stream, fileName} = await input.file
-            console.log(fileName)
+            const {createReadStream, filename, mimetype, encoding} = await input.file
+            console.log(filename)
+            console.log(createReadStream)
             input.picture = 'ss'
             if(created){
                 return{
