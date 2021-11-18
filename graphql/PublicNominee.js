@@ -54,7 +54,7 @@ const nomineeTypes = gql`
 
 
 const nomineeResolvers = {
-
+    Upload: GraphQLUpload,
     Query:{
         getAllPublicNominee:async()=>{
             return await PublicNominee.findAll()
@@ -63,7 +63,7 @@ const nomineeResolvers = {
             return await PublicNominee.findOne({where:{id}})
         },
     },
-    Upload: GraphQLUpload,
+   
     Mutation:{
         createPublicNominee:async(_,{input})=>{
             const [category, created] = await PublicNominee.findOrCreate({where:{name:input.name}, defaults:input})
