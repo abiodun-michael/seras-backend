@@ -10,9 +10,11 @@ cloudinary.config({
 
 
   const uploadImage = async(stream,filename)=>{
+      
    const cloudinaryStream = cloudinary.uploader.upload_stream({ resource_type: "image" }, (error,result)=>{
-        console.log(result)
-        console.log(error)
+        if(result){
+            return result
+        }
     })
 
     stream.pipe(cloudinaryStream)
