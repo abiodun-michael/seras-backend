@@ -13,7 +13,7 @@ cloudinary.config({
       
    const cloudinaryStream = cloudinary.uploader.upload_stream({ resource_type: "image" }, (error,result)=>{
         if(result){
-            return result
+            return {secure_url,public_id}
         }
     })
 
