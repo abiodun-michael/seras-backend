@@ -5,7 +5,7 @@ const {
     GraphQLUpload,
   } = require('graphql-upload');
 
-const votersTypes = gql`
+const nomineeTypes = gql`
 
     scalar Upload
 
@@ -53,7 +53,7 @@ const votersTypes = gql`
 `
 
 
-const votersResolvers = {
+const nomineeResolvers = {
 
     Query:{
         getAllPublicNominee:async()=>{
@@ -100,4 +100,4 @@ const votersResolvers = {
     }
 }
 
-module.exports = {votersTypes,votersResolvers}
+module.exports = {nomineeTypes,nomineeResolvers}
