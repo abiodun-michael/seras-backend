@@ -1,5 +1,6 @@
 const {gql} = require('apollo-server-express')
 const {PublicNominee} = require('../database')
+
 const {
     GraphQLUpload,
   } = require('graphql-upload');

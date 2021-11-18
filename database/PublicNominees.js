@@ -12,7 +12,7 @@ const PublicNominee = Connection.define("publicnominee",{
         allowNull:true
     },
     type:{
-        type:DataTypes.ENUM("COMPANY","ARTISTE"),
+        type:DataTypes.ENUM("COMPANY","CELEBRITY"),
         allowNull:true
     },
     picture:{

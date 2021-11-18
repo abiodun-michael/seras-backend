@@ -1,16 +1,16 @@
 const { mergeTypeDefs,mergeResolvers  } = require('@graphql-tools/merge')
 const {categoryTypes,categoryResolvers} = require('./Category')
-const {votersTypes,votersResolvers} = require('./PublicVoter')
+const {nomineeTypes,nomineeResolvers} = require('./PublicNominee')
 
 
 const types = [
   categoryTypes,
-  votersTypes
+  nomineeTypes
   ];
   
 const resolvers = [
   categoryResolvers,
-  votersResolvers
+  nomineeResolvers
 ];
     
 

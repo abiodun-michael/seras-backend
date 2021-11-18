@@ -1,9 +1,9 @@
 const Category = require('./Categories')
-const PubilcNominee = require('./PublicNominees')
+const PublicNominee = require('./PublicNominees')
 const PublicVoters = require('./PublicVoter')
 
 module.exports = {
     Category,
-    PubilcNominee,
+    PublicNominee,
     PublicVoters
 }
