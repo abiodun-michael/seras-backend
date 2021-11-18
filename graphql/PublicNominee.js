@@ -1,5 +1,6 @@
 const {gql} = require('apollo-server-express')
 const {PublicNominee} = require('../database')
+const {uploadImage} = require('../util/fileUploader')
 
 const {
     GraphQLUpload,
@@ -70,8 +71,8 @@ const nomineeResolvers = {
             const {createReadStream, filename, mimetype, encoding} = await input.file
 
             const stream = createReadStream()
-            console.log(stream)
-            
+            await uploadImage(stream,filename)
+
             if(created){
                 return{
                     message:"Nominee added",
