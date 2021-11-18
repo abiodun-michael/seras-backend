@@ -68,9 +68,10 @@ const nomineeResolvers = {
         createPublicNominee:async(_,{input})=>{
             const [category, created] = await PublicNominee.findOrCreate({where:{name:input.name}, defaults:input})
             const {createReadStream, filename, mimetype, encoding} = await input.file
-            console.log(filename)
-            console.log(createReadStream)
-            input.picture = 'ss'
+
+            const stream = createReadStream()
+            console.log(stream)
+            
             if(created){
                 return{
                     message:"Nominee added",
