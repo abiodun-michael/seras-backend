@@ -67,13 +67,15 @@ const nomineeResolvers = {
    
     Mutation:{
         createPublicNominee:async(_,{input})=>{
-            const {createReadStream, filename, mimetype, encoding} = await input.file
 
-            const stream = createReadStream()
-            const f = await uploadImage(stream,"nominee")
-            console.log('my file: ',JSON.stringify(f))
-            
-
+            if(input.file){
+                const {createReadStream, filename, mimetype, encoding} = await input.file
+                const stream = createReadStream()
+                const {secure_url} = await uploadImage(stream,"nominee")
+                input.picture = secure_url
+    
+            }
+           
             const [category, created] = await PublicNominee.findOrCreate({where:{name:input.name}, defaults:input})
            
             
