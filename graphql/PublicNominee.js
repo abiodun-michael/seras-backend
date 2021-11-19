@@ -67,14 +67,14 @@ const nomineeResolvers = {
    
     Mutation:{
         createPublicNominee:async(_,{input})=>{
-
-            if(input.file){
+                const nominee = await PublicNominee.findOne({where:{name:input.name,country:input.country}})
+            if(!nominee){
                 const {createReadStream, filename, mimetype, encoding} = await input.file
                 const stream = createReadStream()
                 const {secure_url} = await uploadImage(stream,"nominee")
                 input.picture = secure_url
     
-            }
+            
            
             const [category, created] = await PublicNominee.findOrCreate({where:{name:input.name}, defaults:input})
            
@@ -91,6 +91,11 @@ const nomineeResolvers = {
                 message:"Nominee already exist",
                 status:false
             }
+        }
+        return{
+            message:"Nominee already exist",
+            status:false
+        }
         },
         updatePublicNominee:async(_,{input})=>{
             const updated = await PublicNominee.update(input,{where:{id:input.id}})
