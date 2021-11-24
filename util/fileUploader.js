@@ -25,6 +25,4 @@ cloudinary.config({
     })
 
   }
-
-
   module.exports= {uploadImage}
