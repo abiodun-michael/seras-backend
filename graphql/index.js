@@ -1,7 +1,7 @@
 const { mergeTypeDefs,mergeResolvers  } = require('@graphql-tools/merge')
 const {categoryTypes,categoryResolvers} = require('./Category')
 const {nomineeTypes,nomineeResolvers} = require('./PublicNominee')
-const {adminTypes,adminResolvers} = require('./PublicNominee')
+const {adminTypes,adminResolvers} = require('./Admin')
 
 
 const types = [
