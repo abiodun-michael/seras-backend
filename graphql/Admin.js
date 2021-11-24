@@ -102,9 +102,6 @@ const adminResolvers = {
         
     },
 
-    Admin:{
-       group: async({groupId})=> await Group.findOne({where:groupId})
-    },
     Mutation:{
         createAdmin:async(_,{input},{user})=>{
             if(!user || user?.role != "ADMIN") return{message:"You do not have the permission to perform this operation", status:false}
