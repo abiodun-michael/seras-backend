@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 5000
 
 let allowedOrigins = [
   'http://localhost:3000',
-  'https://studio.apollographql.com'
+  'https://studio.apollographql.com',
+  'https://app-theseras-swish2.vercel.app',
+  'https://app.theseras.com'
 ]
 
 const startApolloServer = async()=>{

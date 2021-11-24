@@ -26,6 +26,6 @@ const PublicNominee = Connection.define("publicnominee",{
 })
 
 Theme.hasMany(PublicNominee)
-PublicNominee.sync({force:false})
+PublicNominee.sync({force:true})
 
 module.exports = PublicNominee
