@@ -72,9 +72,15 @@ const nomineeResolvers = {
         },
 
         getAllNominee:async()=>{
-            const n = await PublicNominee.findAll({group:["category"]})
-            console.log(n)
-            return n
+            return [
+                {category:"Best Personality (Influencer for Good)"},
+                {category:"Africa's Top Celebrity (Promotion of social Good and Justice)"}
+            ]
+        }
+    },
+    PublicCategory:{
+        nominee: async({category})=>{
+            return await PublicNominee.findAll({where:{category}})
         }
     },
     Mutation:{
