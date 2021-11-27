@@ -16,6 +16,11 @@ const nomineeTypes = gql`
         data:PublicNominee
     }
 
+    type PublicCategory{
+        category:String
+        nominees:[PublicNominee]
+    }
+
     type PublicNominee{
         id:Int
         name:String
@@ -45,6 +50,7 @@ const nomineeTypes = gql`
     extend type Query{
         getAllPublicNominee:[PublicNominee]
         getPublicNomineeById(id:Int!):PublicNominee
+        getAllNominee:[PublicCategory]
     }
 
     extend type Mutation{
@@ -64,8 +70,13 @@ const nomineeResolvers = {
         getPublicNomineeById:async(_,{id})=>{
             return await PublicNominee.findOne({where:{id}})
         },
+
+        getAllNominee:async()=>{
+            const n = await PublicNominee.findAll({group:"category"})
+            console.log(n)
+            return n
+        }
     },
-   
     Mutation:{
         createPublicNominee:async(_,{input})=>{
                 const nominee = await PublicNominee.findOne({where:{name:input.name,country:input.country}})
