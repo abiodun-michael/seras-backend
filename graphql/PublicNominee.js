@@ -18,7 +18,7 @@ const nomineeTypes = gql`
 
     type PublicCategory{
         category:String
-        nominees:[PublicNominee]
+        nominee:[PublicNominee]
     }
 
     type PublicNominee{
