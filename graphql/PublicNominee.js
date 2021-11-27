@@ -57,6 +57,7 @@ const nomineeTypes = gql`
         createPublicNominee(input:CreatePublicNomineeInput):PublicNomineeMutationResponse
         updatePublicNominee(input:UpdatePublicNomineeInput):PublicNomineeMutationResponse
         deletePublicNominee(id:Int!):PublicNomineeMutationResponse
+        vote(id:Int!):PublicNomineeMutationResponse
     }
 `
 
@@ -149,6 +150,21 @@ const nomineeResolvers = {
                     message:"An error occured",
                     status:false
                 }
+            }
+        },
+        vote:async(_,{id})=>{
+            const nominee = await PublicNominee.findOne({where:{id}})
+            if(nominee){
+                const votes = nominee.vote == null ? 1: nominee.vote+1
+                await PublicNominee.update({vote:votes},{where:{id}})
+                return{
+                    message:"Your vote has been submitted",
+                    status:true
+                }
+            }
+            return{
+                message:"Invalid nominee",
+                status:false
             }
         }
     }

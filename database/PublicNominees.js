@@ -22,6 +22,10 @@ const PublicNominee = Connection.define("publicnominee",{
     category:{
         type:DataTypes.STRING,
         allowNull:true
+    },
+    vote:{
+        type:DataTypes.INTEGER,
+        allowNull:true
     }
 })
 
