@@ -38,7 +38,7 @@ const nomineeTypes = gql`
         name:String
         country:String
         type:String
-        file:Upload!
+        file:Upload
         category:String
     }
 
@@ -99,6 +99,14 @@ const nomineeResolvers = {
         }
         },
         updatePublicNominee:async(_,{input})=>{
+
+            if(input.file){
+                const {createReadStream, filename, mimetype, encoding} = await input.file
+                const stream = createReadStream()
+                const {secure_url} = await uploadImage(stream,"nominee")
+                input.picture = secure_url
+            }
+            
             const updated = await PublicNominee.update(input,{where:{id:input.id}})
             if(updated){
                 return{
