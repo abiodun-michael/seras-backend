@@ -50,6 +50,7 @@ const nomineeTypes = gql`
     extend type Mutation{
         createPublicNominee(input:CreatePublicNomineeInput):PublicNomineeMutationResponse
         updatePublicNominee(input:UpdatePublicNomineeInput):PublicNomineeMutationResponse
+        deletePublicNominee(id:Int!):PublicNomineeMutationResponse
     }
 `
 
@@ -109,6 +110,20 @@ const nomineeResolvers = {
             return{
                 message:"An error occured",
                 status:false
+            }
+        },
+        deletePublicNominee: async(_,{id})=>{
+            const isDeleted = await PublicNominee.destroy({where:{id}})
+            if(isDeleted){
+                return{
+                    message:"nominee deleted",
+                    status:true
+                }
+            }else{
+                return{
+                    message:"An error occured",
+                    status:false
+                }
             }
         }
     }
