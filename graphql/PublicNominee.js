@@ -72,7 +72,7 @@ const nomineeResolvers = {
         },
 
         getAllNominee:async()=>{
-            const n = await PublicNominee.findAll({group:["category","id"]})
+            const n = await PublicNominee.findAll({group:["category"]})
             console.log(n)
             return n
         }
