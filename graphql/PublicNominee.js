@@ -28,6 +28,7 @@ const nomineeTypes = gql`
         type:String
         picture:String
         category:String
+        vote:Int
     }
 
     input CreatePublicNomineeInput{

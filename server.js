@@ -18,7 +18,8 @@ let allowedOrigins = [
   'http://localhost:3000',
   'https://studio.apollographql.com',
   'https://app-theseras-swish2.vercel.app',
-  'https://app.theseras.com'
+  'https://app.theseras.com',
+  'https://vote.theseras.com',
 ]
 
 const startApolloServer = async()=>{
