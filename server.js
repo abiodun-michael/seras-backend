@@ -20,6 +20,7 @@ let allowedOrigins = [
   'https://app-theseras-swish2.vercel.app',
   'https://app.theseras.com',
   'https://vote.theseras.com',
+  'https://seras-landing.vercel.app'
 ]
 
 const startApolloServer = async()=>{
