@@ -76,7 +76,8 @@ const nomineeResolvers = {
         getAllNominee:async()=>{
             return [
                 {category:"Best Personality (Influencer for Good)"},
-                {category:"Africa's Top Celebrity (Promotion of social Good and Justice)"}
+                {category:"Africa's Top Celebrity (Promotion of social Good and Justice)"},
+                {category:"Most responsible company (People's choice)"},
             ]
         }
     },
